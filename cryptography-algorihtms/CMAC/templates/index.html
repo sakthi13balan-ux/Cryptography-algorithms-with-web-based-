@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMAC</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; padding: 40px; }
+        .box { background: white; padding: 20px; border-radius: 10px; max-width: 800px; margin: auto; }
+        .step { border-left: 4px solid #28a745; margin: 15px 0; padding-left: 15px; }
+        .label { font-weight: bold; display: block; color: #28a745; }
+        .val { font-family: monospace; word-break: break-all; background: #eee; padding: 5px; display: block; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; }
+        button { background: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>CMAC</h1>
+        <form method="POST">
+            <input type="text" name="key" placeholder="Enter 16-byte Key" required>
+            <input type="text" name="message" placeholder="Enter Message" required>
+            <button type="submit">Generate CMAC</button>
+        </form>
+
+        {% if results %}
+            <h3>Processing Steps:</h3>
+            {% for s in results %}
+                <div class="step">
+                    <span class="label">{{ s.name }}</span>
+                    <small>{{ s.desc }}</small>
+                    <span class="val">{{ s.data }}</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
